@@ -7,12 +7,26 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//notebook/page[@name='description_page']" position="before">
+            <xpath expr="//notebook/page[@name='description_page']" position="after">
                 <page string="Checklist">
-                    <field name="checklist_ids">
+                    <button name="add_checklist_temp"
+                                string="Add checklist" type="object"
+                                class="btn-primary mb-3 oe_edit_only" attrs="{'invisible':[('is_closed','=',True)]}"/>
+                    <button name="reset_all_checklist"
+                                confirm="Do you want to remove all checklist items?"
+                                string="Clear checklist" type="object"
+                                class="btn-warning oe_edit_only ml-3 mb-3" attrs="{'invisible':[('is_closed','=',True)]}"/>
+
+                    <field name="checklist_ids" widget="checklist_title_one2many">
                         <tree editable="bottom" class="task_checklist">
-                            <field name="check_box" string="Check"/>
+                            <field name="is_title" invisible="1"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="check_box" string=" "/>
                             <field name="name" placeholder="e.g. Just do it" decoration-muted="check_box == True"/>
+                            <control>
+                                <create name="add_checklist_title" string="Add Title" context="{'default_is_title': True}"/>
+                                <create name="add_checklist_content" string="Add Content"/>
+                            </control>
                         </tree>
                     </field>
                 </page>

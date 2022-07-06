@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="project_task_checklist_template_view_form">
+            <field name="name">project.task.checklist.template.view.form</field>
+            <field name="model">project.task.checklist.template</field>
+            <field name="arch" type="xml">
+                <form string="Add checklist template">
+                    <group col="1">
+                        <field name="checklist_temp" string="Choose Checklist" widget="many2many_tags"
+                               options="{'no_create': True}" domain="[('is_title','=',True)]" context="{'show_task':True}"
+                               force_save="1" placeholder="Choose Checklist Template"/>
+                    </group>
+                    <footer>
+                        <button string="Add" name="add_checklist" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

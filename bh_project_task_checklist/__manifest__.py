@@ -11,11 +11,13 @@
     'depends': ['project', 'base'],
     'data': [
         'security/ir.model.access.csv',
-        'views/project_check_list.xml'
+        'views/project_check_list.xml',
+        'wizard/project_task_checklist_template_view.xml'
     ],
     'assets': {
         'web.assets_backend': [
-            'bh_project_task_checklist/static/src/css/project_check_list.css'
+            'bh_project_task_checklist/static/src/css/project_check_list.css',
+            'bh_project_task_checklist/static/src/js/checklist_title_one2many.js',
         ],
     },
     'images': ['static/description/banner_checklist.jpg'],
