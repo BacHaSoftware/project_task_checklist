@@ -1,12 +1,13 @@
-.task_checklist [data-name="check_box"] {
-    width: 60px;
+.task_checklist table.o_list_table thead > tr > th[data-name="check_box"]{
+     width: 50px !important;
+}
+
+.task_checklist table.o_list_table tbody > tr > td[name="check_box"]{
+    text-align: center;
 }
 
 .o_list_row_count_sheliya{
     width: 20px;
-}
-.o_boolean_button_cell{
-    text-align: center;
 }
 .task_checklist .text-muted{
     text-decoration: line-through;

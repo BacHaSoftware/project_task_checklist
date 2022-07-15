@@ -7,6 +7,14 @@ class ProjectTask(models.Model):
 
     checklist_ids = fields.One2many('task.checklist', 'task_id', required=True)
 
+    def copy(self, default=None):
+        default = default or {}
+        new_task = super(ProjectTask, self).copy(default)
+        for checklist in self.checklist_ids:
+            # Copy o2m and assign new task
+            checklist.copy(default={'task_id': new_task.id})
+        return new_task
+
     def add_checklist_temp(self):
         return {
             'name': _('Add checklist'),
