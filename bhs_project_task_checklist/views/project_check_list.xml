@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_task_form2_inherit_form_view">
+        <field name="name">project.task.form.view.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook/page[@name='description_page']" position="after">
+                <page string="Checklist">
+                    <button name="add_checklist_temp"
+                                string="Add checklist" type="object"
+                                class="btn-primary mb-3 oe_edit_only" attrs="{'invisible':[('is_closed','=',True)]}"/>
+                    <button name="reset_all_checklist"
+                                confirm="Do you want to remove all checklist items?"
+                                string="Clear checklist" type="object"
+                                class="btn-warning oe_edit_only ml-3 mb-3" attrs="{'invisible':[('is_closed','=',True)]}"/>
+
+                    <field name="checklist_ids" widget="checklist_title_one2many">
+                        <tree editable="bottom" class="task_checklist">
+                            <field name="is_title" invisible="1"/>
+                            <field name="sequence" widget="handle"/>
+                            <field name="check_box" string=" "/>
+                            <field name="name" placeholder="e.g. Just do it" decoration-muted="check_box == True"/>
+                            <control>
+                                <create name="add_checklist_title" string="Add Title" context="{'default_is_title': True}"/>
+                                <create name="add_checklist_content" string="Add Content"/>
+                            </control>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
