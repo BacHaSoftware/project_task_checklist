@@ -17,11 +17,11 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'bhs_project_checklist/static/src/scss/project_check_list.scss',
-            'bhs_project_checklist/static/src/js/checklist_title_one2many.js',
-            'bhs_project_checklist/static/src/js/checklist_title_list_renderer.js',
-            'bhs_project_checklist/static/src/js/checklist_title_one2many_field.js',
-            'bhs_project_checklist/static/src/xml/KanbanRender.xml',
+            'bhs_project_task_checklist/static/src/scss/project_check_list.scss',
+            'bhs_project_task_checklist/static/src/js/checklist_title_one2many.js',
+            'bhs_project_task_checklist/static/src/js/checklist_title_list_renderer.js',
+            'bhs_project_task_checklist/static/src/js/checklist_title_one2many_field.js',
+            'bhs_project_task_checklist/static/src/xml/KanbanRender.xml',
         ]
     },
 
