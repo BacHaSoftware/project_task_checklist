@@ -1,5 +1,5 @@
 {
-    'name': "BH Project Task Check List",
+    'name': "Project Task Check List",
     'version': '15.0.1.0.0',
     'summary': """Check-list task""",
     'description': """Create and check task completion on the basis of checklists""",
@@ -16,8 +16,8 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'bh_project_task_checklist/static/src/css/project_check_list.css',
-            'bh_project_task_checklist/static/src/js/checklist_title_one2many.js',
+            'bhs_project_task_checklist/static/src/css/project_check_list.css',
+            'bhs_project_task_checklist/static/src/js/checklist_title_one2many.js',
         ],
     },
     'images': ['static/description/banner_checklist.jpg'],
