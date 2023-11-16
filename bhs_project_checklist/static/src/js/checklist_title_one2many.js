@@ -67,6 +67,7 @@ var ChkSectionListRenderer = ListRenderer.extend({
         var $row = this._super.apply(this, arguments);
         if (record.data[this.sectionFieldName]) {
             $row.addClass("o_is_section");
+            console.log('$row', $row)
         }
         return $row;
     },
@@ -82,6 +83,7 @@ var ChkSectionListRenderer = ListRenderer.extend({
         var self = this;
         return def.then(function () {
             self.$('table.o_list_table').addClass('o_section_list_view');
+            console.log('demo', self.$('table.o_list_table'))
         });
     },
     // Handlers

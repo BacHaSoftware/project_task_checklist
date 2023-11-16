@@ -36,7 +36,6 @@ class TaskChecklist(models.Model):
     task_id = fields.Many2one('project.task')
     check_box = fields.Boolean(default=False)
     name = fields.Char(string='Title', required=True, index=True)
-
     sequence = fields.Integer('Sequence', default=0)
     # Categories
     is_title = fields.Boolean('Is a title', default=False)
@@ -76,9 +75,6 @@ class TaskChecklist(models.Model):
                 name = "%s (%s)" % (name, checklist.task_id.name)
             res += [(checklist.id, name)]
         return res
-
-
-
 
 
 

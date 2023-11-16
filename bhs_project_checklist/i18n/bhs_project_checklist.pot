@@ -1,0 +1,181 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bhs_project_checklist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-16 07:33+0000\n"
+"PO-Revision-Date: 2023-11-16 07:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.project_task_checklist_template_view_form
+msgid "Add"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "Add Content"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "Add Title"
+msgstr ""
+
+#. module: bhs_project_checklist
+#. odoo-python
+#: code:addons/bhs_project_checklist/models/project_task_check_list.py:0
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+#, python-format
+msgid "Add checklist"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.project_task_checklist_template_view_form
+msgid "Add checklist template"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.project_task_checklist_template_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__check_box
+msgid "Check Box"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task__checklist_ids
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "Checklist"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model,name:bhs_project_checklist.model_task_checklist
+msgid "Checklist for the task"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__checklist_temp
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.project_task_checklist_template_view_form
+msgid "Choose Checklist"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.project_task_checklist_template_view_form
+msgid "Choose Checklist Template"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "Clear checklist"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__create_uid
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__create_date
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.hr_timesheet_line_search_inherit
+msgid "Current Month"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__display_name
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "Do you want to remove all checklist items?"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.hr_timesheet_line_search_inherit
+msgid "Employee"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__id
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__id
+msgid "ID"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__is_title
+msgid "Is a title"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template____last_update
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__write_uid
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__write_date
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__line_ids
+msgid "Line"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.hr_timesheet_line_search_inherit
+msgid "My Timesheets this month"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model,name:bhs_project_checklist.model_project_task_checklist_template
+msgid "Project task checklist template"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model,name:bhs_project_checklist.model_project_task
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_project_task_checklist_template__task_id
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__task_id
+msgid "Task"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__name
+#: model:ir.model.fields,field_description:bhs_project_checklist.field_task_checklist__title_id
+msgid "Title"
+msgstr ""
+
+#. module: bhs_project_checklist
+#: model_terms:ir.ui.view,arch_db:bhs_project_checklist.view_task_form2_inherit_form_view
+msgid "e.g. Just do it"
+msgstr ""

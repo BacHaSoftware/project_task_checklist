@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="project.ProjectTaskNameWithSubtaskCountCharField" t-inherit="project.ProjectTaskNameWithSubtaskCountCharField" owl="1">
+        <xpath expr="//span[@t-out='formattedSubtaskCount']" position="replace">
+            <span
+                class="text-warning ms-2"
+                t-out="formattedSubtaskCount"
+                style="font-weight: bold;"
+            />
+        </xpath>
+    </t>
+
+</templates>

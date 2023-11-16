@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="project_task_report_inherit_pivot_view">
+        <field name="name">account.analytic.line.pivot.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.view_hr_timesheet_line_pivot"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="date" interval="day" type="col"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_line_search_inherit" model="ir.ui.view">
+        <field name="name">hr_timesheet_line_search.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <filter string="Current Month" name="current_month"
+                        domain="[('date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('date','&gt;=',context_today().strftime('%%Y-%%m-01'))]"/>
+                <filter string="My Timesheets this month" name="my_time_sheet_this_month"
+                        domain="[('date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('date','&gt;=',context_today().strftime('%%Y-%%m-01')),
+                            ('user_id','=', uid)]"/>
+            </xpath>
+
+            <xpath expr="//filter[@name='groupby_project']" position="before">
+                <filter string="Employee" name="groupby_employee_first" domain="[]" context="{'group_by': 'employee_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_timesheet.act_hr_timesheet_report" model="ir.actions.act_window">
+        <field name="context">{'search_default_groupby_employee_first':1,'search_default_groupby_task':1,
+                'search_default_current_month':1}</field>
+    </record>
+
+
+</odoo>

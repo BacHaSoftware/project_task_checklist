@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web.KanbanRenderer" t-inherit="web.KanbanRenderer" owl="1">
+        <xpath expr="//Dropdown" position="attributes">
+            <attribute name="position">'bottom-end'</attribute>
+        </xpath>
+    </t>
+
+</templates>
