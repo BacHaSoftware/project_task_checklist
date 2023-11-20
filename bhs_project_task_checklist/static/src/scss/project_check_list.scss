@@ -1,0 +1,45 @@
+.task_checklist table.o_list_table thead > tr > th[data-name="check_box"]{
+     width: 50px !important;
+}
+
+.task_checklist table.o_list_table tbody > tr > td[name="check_box"]{
+    text-align: center;
+}
+
+.task_checklist table.o_list_table thead > tr > th[data-name="name"]{
+     width: auto !important;
+}
+
+.o_list_row_count_sheliya{
+    width: 20px;
+}
+.task_checklist .text-muted{
+    text-decoration: line-through;
+}
+table.o_section_list_view{
+    --table-bg: none !important;
+    thead {
+        background-color: #e9ecef !important;
+    }
+}
+
+table.o_section_list_view tr.o_data_row.o_is_section_title {
+    font-weight: bold;
+    background-color: #DDD;
+    border-top: 1px solid #BBB;
+    border-bottom: 1px solid #BBB;
+}
+
+.o_kanban_renderer .o_kanban_group:not(.o_column_folded) .o_kanban_header {
+    background-color: #f6f7fa;
+}
+
+.o_kanban_renderer .o_kanban_group .o_kanban_header, .o_kanban_renderer .o_quick_create_folded{
+    position: sticky!important;
+    z-index: 1;
+//     top: 0;
+//     background-color: #f8f9fa;
+}
+
+.o_kanban_view .o_kanban_grouped .o_kanban_record, .o_kanban_view .o_kanban_grouped .o_kanban_quick_create {margin-bottom: 8px;}
+.o_kanban_renderer .o_kanban_record > div, .o_kanban_renderer .o_kanban_quick_create{border-radius: 5px;}

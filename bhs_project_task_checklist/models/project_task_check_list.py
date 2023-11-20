@@ -26,7 +26,7 @@ class ProjectTask(models.Model):
         }
 
     def reset_all_checklist(self):
-        for task in self.filtered(lambda t: t.is_closed != True):
+        for task in self.filtered(lambda t: t.state != '1_done'):
             task.checklist_ids = [(2, line.id) for line in task.checklist_ids]
 
 class TaskChecklist(models.Model):
@@ -36,10 +36,9 @@ class TaskChecklist(models.Model):
     task_id = fields.Many2one('project.task')
     check_box = fields.Boolean(default=False)
     name = fields.Char(string='Title', required=True, index=True)
-
     sequence = fields.Integer('Sequence', default=0)
     # Categories
-    is_title = fields.Boolean('Is a title', default=False)
+    is_title = fields.Boolean(default=False)
     title_id = fields.Many2one('task.checklist', string="Title", compute="_compute_title_id", store=True)
     line_ids = fields.One2many('task.checklist', "title_id", string="Line")
 
@@ -76,9 +75,6 @@ class TaskChecklist(models.Model):
                 name = "%s (%s)" % (name, checklist.task_id.name)
             res += [(checklist.id, name)]
         return res
-
-
-
 
 
 

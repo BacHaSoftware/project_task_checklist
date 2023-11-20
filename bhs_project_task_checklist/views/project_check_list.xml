@@ -6,20 +6,19 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
-
             <xpath expr="//notebook/page[@name='description_page']" position="after">
                 <page string="Checklist">
                     <button name="add_checklist_temp"
                                 string="Add checklist" type="object"
-                                class="btn-primary mb-3 oe_edit_only" attrs="{'invisible':[('is_closed','=',True)]}"/>
+                                class="btn-primary mb-3 oe_edit_only"/>
                     <button name="reset_all_checklist"
                                 confirm="Do you want to remove all checklist items?"
                                 string="Clear checklist" type="object"
-                                class="btn-warning oe_edit_only ml-3 mb-3" attrs="{'invisible':[('is_closed','=',True)]}"/>
+                                class="btn-warning oe_edit_only ms-3 mb-3"/>
 
                     <field name="checklist_ids" widget="checklist_title_one2many">
-                        <tree editable="bottom" class="task_checklist">
-                            <field name="is_title" invisible="1"/>
+                        <tree editable="bottom" class="task_checklist" limit="200">
+                            <field name="is_title" column_invisible="True"/>
                             <field name="sequence" widget="handle"/>
                             <field name="check_box" string=" "/>
                             <field name="name" placeholder="e.g. Just do it" decoration-muted="check_box == True"/>
@@ -35,5 +34,15 @@
     </record>
 
 
+    <record model="ir.ui.view" id="task_checklist_tree_view">
+        <field name="name">task_checklist_tree_view</field>
+        <field name="model">task.checklist</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
 
 </odoo>
