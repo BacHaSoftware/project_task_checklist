@@ -20,7 +20,7 @@
             'bhs_project_task_checklist/static/src/js/checklist_title_one2many.js',
         ],
     },
-    'images': ['static/description/banner_checklist.jpg'],
+    'images': ['static/description/banner.gif'],
     'license': "AGPL-3",
     'installable': True,
     'application': True,
