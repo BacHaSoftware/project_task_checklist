@@ -25,7 +25,7 @@
         ]
     },
 
-    'images': ['static/description/banner_checklist.jpg'],
+    'images': ['static/description/banner.gif'],
     'license': "AGPL-3",
     'installable': True,
     'application': True,
