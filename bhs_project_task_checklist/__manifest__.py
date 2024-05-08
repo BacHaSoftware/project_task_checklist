@@ -1,5 +1,5 @@
 {
-    'name': "BHS Project Check List",
+    'name': "Project Task Check List",
     'version': '16.0.1.0.0',
     'summary': """Check-list task""",
     'description': """Create and check task completion on the basis of checklists""",
