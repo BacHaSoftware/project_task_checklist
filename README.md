@@ -52,6 +52,8 @@
 
 🌟 <code>Checklist on Task</code>: You can create checklist on task view. If done with a line, you can mark it as done for easy tracking progress of tasks.
 
+🌟 <code>Add Checklist Template</code>: You can add checklist template. All checklist lines of the template will be added to tasks.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
