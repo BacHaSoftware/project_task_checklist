@@ -8,7 +8,7 @@
     <img src="/bhs_project_task_checklist/static/description/icon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Project Task Check List</h3>
+  <h3 align="center">Project Task Checklist</h3>
 
   <p align="center">
     Feature to create checklist in project tasks. This module will be a great solution for you as you can easily control progress of projects.<br />
