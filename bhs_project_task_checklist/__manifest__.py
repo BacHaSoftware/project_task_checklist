@@ -1,5 +1,5 @@
 {
-    'name': "Project Task Check List",
+    'name': "Project Task Checklist",
     'version': '16.0.1.0.0',
     'summary': """Check-list task""",
     'description': """Create and check task completion on the basis of checklists""",
@@ -25,7 +25,7 @@
         ]
     },
 
-    'images': ['static/description/banner.gif'],
+    'images': ['static/description/banner.png'],
     'license': "AGPL-3",
     'installable': True,
     'application': True,
