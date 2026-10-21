@@ -1,6 +1,5 @@
 /** @odoo-module */
 
-import { makeContext } from "@web/core/context";
 import { ListRenderer } from "@web/views/list/list_renderer";
 import { useEffect } from "@odoo/owl";
 
@@ -10,26 +9,11 @@ export class ChkTitleListRenderer extends ListRenderer {
 
         this.discriminant = "is_title";
         this.titleField = "name";
-        useEffect(
-            (table) => {
-                if (table) {
-                    table.classList.add("o_section_list_view");
-                }
-            },
-            () => [this.tableRef.el]
-        );
+        // OWL 3: tableRef is a signal ref (read it by calling it); the effect re-runs when it changes
+        useEffect(() => {
+            this.tableRef()?.classList.add("o_section_list_view");
+        });
     }
-
-//    add(params) {
-//        let editable = false;
-//        if (params.context && !this.env.isSmall) {
-//            const evaluatedContext = makeContext([params.context]);
-//            if (evaluatedContext[`default_${this.discriminant}`]) {
-//                editable = this.props.editable;
-//            }
-//        }
-//        super.add({ ...params, editable });
-//    }
 
     getColumns(record) {
         const columns = super.getColumns(record);
@@ -56,10 +40,6 @@ export class ChkTitleListRenderer extends ListRenderer {
         sectionColumns.push({ ...titleCol, colspan });
         return sectionColumns;
     }
-
-//    isInlineEditable(record) {
-//        return this.isSection(record) && this.props.editable;
-//    }
 
     isSection(record) {
         return record.data[this.discriminant];

@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
+from odoo import models, fields, api, _, Command
+
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    checklist_ids = fields.One2many('task.checklist', 'task_id', required=True)
-
-    def copy(self, default=None):
-        default = default or {}
-        new_task = super(ProjectTask, self).copy(default)
-        for checklist in self.checklist_ids:
-            # Copy o2m and assign new task
-            checklist.copy(default={'task_id': new_task.id})
-        return new_task
+    # not required: meaningless on a one2many (a task may have no checklist)
+    # copy=True: lines are copied by copy_data(), which core also uses for sub-tasks (copy() is not called on them)
+    checklist_ids = fields.One2many('task.checklist', 'task_id', copy=True)
 
     def add_checklist_temp(self):
         return {
@@ -26,31 +21,61 @@ class ProjectTask(models.Model):
         }
 
     def reset_all_checklist(self):
-        for task in self.filtered(lambda t: t.state != '1_done'):
+        for task in self.filtered(lambda t: not t.stage_id.fold):
             task.checklist_ids = [(2, line.id) for line in task.checklist_ids]
+
+    def check_all_checklist(self):
+        # Section titles are not items to do: only content lines are ticked
+        for task in self.filtered(lambda t: not t.stage_id.fold):
+            task.checklist_ids.filtered(lambda line: not line.is_title).write({'check_box': True})
+
+    def uncheck_all_checklist(self):
+        for task in self.filtered(lambda t: not t.stage_id.fold):
+            task.checklist_ids.filtered(lambda line: not line.is_title).write({'check_box': False})
+
+
+class ProjectTaskRecurrence(models.Model):
+    _inherit = 'project.task.recurrence'
+
+    @api.model
+    def _create_next_occurrences_values(self, recurrence_by_task):
+        # The next occurrence gets the checklist through copy_data(): same lines, every tick cleared.
+        # Core builds the sub-task values with this same method, so sub-task occurrences are reset too.
+        return [
+            {**vals, 'checklist_ids': [_unticked(command) for command in vals['checklist_ids']]}
+            if vals.get('checklist_ids') else vals
+            for vals in super()._create_next_occurrences_values(recurrence_by_task)
+        ]
+
+
+def _unticked(command):
+    """Copy of a one2many create command with check_box False; other commands are returned unchanged."""
+    if command[0] == Command.CREATE:
+        return Command.create({**command[2], 'check_box': False})
+    return command
+
 
 class TaskChecklist(models.Model):
     _name = 'task.checklist'
     _description = 'Checklist for the task'
 
-    task_id = fields.Many2one('project.task')
+    # A line lives and dies with its task: a line without a task would be hidden from every user (access follows the task)
+    task_id = fields.Many2one('project.task', required=True, ondelete='cascade')
     check_box = fields.Boolean(default=False)
-    name = fields.Char(string='Title', required=True, index=True)
+    # copy=True: Odoo 20 suffixes a copied 'name' with " (copy)" unless copy is declared
+    name = fields.Char(string='Title', required=True, index=True, copy=True)
     sequence = fields.Integer('Sequence', default=0)
     # Categories
-    is_title = fields.Boolean(default=False)
-    title_id = fields.Many2one('task.checklist', string="Title", compute="_compute_title_id", store=True)
+    is_title = fields.Boolean('Is a title', default=False)
+    # Label differs from name ('Title', the column of the task form list): Odoo warns about duplicate labels
+    title_id = fields.Many2one('task.checklist', string="Section", compute="_compute_title_id", store=True)
     line_ids = fields.One2many('task.checklist', "title_id", string="Line")
 
     @api.depends('task_id.checklist_ids.is_title', 'task_id.checklist_ids.sequence')
     def _compute_title_id(self):
-        """ Will take all the slides of the channel for which the index is higher
-        than the index of this category and lower than the index of the next category.
-
-        Lists are manually sorted because when adding a new browse record order
-        will not be correct as the added slide would actually end up at the
-        first place no matter its sequence."""
-        self.title_id = False  # initialize whatever the state
+        """Nearest preceding title by sequence. Lines are sorted by hand: a new record is not yet in its
+        sequence order."""
+        self.title_id = False
 
         tasks = {}
         for checklist in self:
@@ -67,14 +92,20 @@ class TaskChecklist(models.Model):
                 elif chk.title_id != current_title:
                     chk.title_id = current_title.id
 
-    def name_get(self):
-        res = []
+    def write(self, vals):
+        # Access rules are checked on the lines before the write: moving a line into another task
+        # requires write access on that task as well
+        if vals.get('task_id'):
+            self.env['project.task'].browse(vals['task_id']).check_access('write')
+        return super().write(vals)
+
+    @api.depends('name', 'task_id.name')
+    @api.depends_context('show_task')
+    def _compute_display_name(self):
+        # Odoo 20: name_get() is gone, the wizard labels a title "Title (Task)" here
+        show_task = self.env.context.get('show_task')
         for checklist in self:
-            name = checklist.name
-            if self.env.context.get('show_task'):
-                name = "%s (%s)" % (name, checklist.task_id.name)
-            res += [(checklist.id, name)]
-        return res
-
-
-
+            if show_task and checklist.task_id:
+                checklist.display_name = f"{checklist.name} ({checklist.task_id.name})"
+            else:
+                checklist.display_name = checklist.name

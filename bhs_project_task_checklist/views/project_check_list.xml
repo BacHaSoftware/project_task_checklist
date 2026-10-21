@@ -10,23 +10,35 @@
                 <page string="Checklist">
                     <button name="add_checklist_temp"
                                 string="Add checklist" type="object"
-                                class="btn-primary mb-3 oe_edit_only"/>
+                                class="btn-primary mb-3 oe_edit_only"
+                    />
+                    <button name="check_all_checklist"
+                                confirm="Do you want to check all checklist items?"
+                                string="Check all" type="object"
+                                class="btn-secondary mb-3 oe_edit_only ms-3"
+                    />
+                    <button name="uncheck_all_checklist"
+                                confirm="Do you want to uncheck all checklist items?"
+                                string="Uncheck all" type="object"
+                                class="btn-secondary oe_edit_only ms-3 mb-3"
+                    />
                     <button name="reset_all_checklist"
                                 confirm="Do you want to remove all checklist items?"
-                                string="Clear checklist" type="object"
-                                class="btn-warning oe_edit_only ms-3 mb-3"/>
+                                string="Clear all" type="object"
+                                class="btn-secondary oe_edit_only ms-3 mb-3"
+                    />
 
                     <field name="checklist_ids" widget="checklist_title_one2many">
-                        <tree editable="bottom" class="task_checklist" limit="200">
+                        <list editable="bottom" class="task_checklist" limit="200">
                             <field name="is_title" column_invisible="True"/>
                             <field name="sequence" widget="handle"/>
-                            <field name="check_box" string=" "/>
+                            <field name="check_box" string=""/>
                             <field name="name" placeholder="e.g. Just do it" decoration-muted="check_box == True"/>
                             <control>
                                 <create name="add_checklist_title" string="Add Title" context="{'default_is_title': True}"/>
                                 <create name="add_checklist_content" string="Add Content"/>
                             </control>
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </xpath>
@@ -38,10 +50,10 @@
         <field name="name">task_checklist_tree_view</field>
         <field name="model">task.checklist</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="id"/>
                 <field name="name"/>
-            </tree>
+            </list>
         </field>
     </record>
 

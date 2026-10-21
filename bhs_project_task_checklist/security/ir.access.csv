@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_project_task_check_list,task.checklist: read lines of readable tasks,task.checklist,base.group_user,r,"[('task_id', 'access', 'read')]"
+access_project_task_check_list_write,task.checklist: change lines of writable tasks,task.checklist,base.group_user,cud,"[('task_id', 'access', 'write')]"
+access_project_task_checklist_template,project.task.checklist.template: writers of the task,project.task.checklist.template,base.group_user,crud,"[('task_id', 'access', 'write')]"
